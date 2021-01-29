@@ -1,0 +1,13 @@
+main{
+    display: flex;
+    justify-content: center;
+}
+
+#graphcon{
+    display: flex;
+    align-items: flex-end;
+}
+
+.graphstyle{
+    background-color: black;
+}
