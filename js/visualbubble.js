@@ -1,26 +1,26 @@
-document.body.addEventListener('click', sortgraph);
-
 // vars
 numbers = Array();
 items = 2400;
 var itemssorted = 0;
+document.body.addEventListener('click', sortgraph);
 
-
-for(i=0;i<items;i++){
+for(i=0;i<2400;i++){
     numbers.push(Math.floor(Math.random() * 500) +1);
     var graph = document.createElement('div');
     graph.setAttribute('id', i);
     graph.setAttribute('class', 'graphstyle');
     document.getElementById('graphcon').appendChild(graph);
     document.getElementById(i).style.height = numbers[i]+'px';
-    document.getElementById(i).style.width = '0.5px';
+    document.getElementById(i).style.width = 0.5+'px';
 }
+    
+
 
 function sortgraph(){
-    for(x=0;x<2400;x++){
-        aVar = setTimeout(sort, 100);
-    }
+    aVar = setInterval(sort, 0.01);
 }
+
+
 
 function sort(){
     for(i=0;i<2400;i++){
