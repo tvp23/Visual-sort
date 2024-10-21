@@ -33,13 +33,11 @@ function insert(array, path, num) {
 
     const currentIndex = path[0];
 
-    // insert
-    if(array[currentIndex]){
-        array[currentIndex] = insert(array[currentIndex], path.slice(1), num);
-    } else { // build path
-        array[currentIndex] = [];
-        array[currentIndex] = insert(array[currentIndex], path.slice(1), num);
+    if(array[currentIndex] === undefined){
+        array[currentIndex] = []; // create bucket
     }
+    //insert
+    array[currentIndex] = insert(array[currentIndex], path.slice(1), num);
 
     return array;
 }
