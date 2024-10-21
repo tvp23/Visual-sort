@@ -44,7 +44,7 @@ function renderInstant() {
     console.clear()
     console.time('Sorting elements');
     sort();
-    console.timeEnd('Sorting elements');12
+    console.timeEnd('Sorting elements');
     renderFrame();
     alert('See console for details')
 
