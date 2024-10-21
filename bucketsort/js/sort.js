@@ -52,18 +52,8 @@ function sortNext(n = 1) {
 }
 
 function sort() {
-    console.clear();
-    console.time('Sorting elements');
-
     elements.forEach(element => {
         insert(sortedElements, getBuckets(element), element);
     });
     elements = [];
-    
-    console.timeEnd('Sorting elements');
-
-    console.log('Sorted array with bucket structure:');
-    console.log(sortedElements);
-    console.log('Sorted array flat:');
-    console.log(sortedElements.flat(Infinity));
 }

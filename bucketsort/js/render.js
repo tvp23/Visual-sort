@@ -2,6 +2,15 @@ const canvasHeight = 500;
 const fps = 30;
 const elementsPerFrame = 8;
 
+function getBar(element) {
+    const height = element / maxIntSize * canvasHeight;
+    const bar = document.createElement('div');
+    bar.style.height = `${Math.floor(height)}px`;
+    bar.style.width = '1px';
+    bar.classList.add('bar');
+    return bar;
+}
+
 function renderFrame() {
     const unsorted = document.getElementById('graph-unsorted');
     unsorted.innerHTML = '';
@@ -9,23 +18,11 @@ function renderFrame() {
     sorted.innerHTML = '';
 
     elements.forEach(element => {
-        const height = element / maxIntSize * canvasHeight;
-        const div = document.createElement('div');
-        div.style.height = `${Math.floor(height)}px`;
-        div.style.width = '1px';
-        div.classList.add('bar');
-
-        unsorted.appendChild(div);
+        unsorted.appendChild(getBar(element));
     });
 
     sortedElements.flat(Infinity).forEach(element => {
-        const height = element / maxIntSize * canvasHeight;
-        const div = document.createElement('div');
-        div.style.height = `${Math.floor(height)}px`;
-        div.style.width = '1px';
-        div.classList.add('bar');
-
-        sorted.appendChild(div);
+        sorted.appendChild(getBar(element));
     });
 }
 
@@ -44,7 +41,15 @@ function renderMotion() {
 function renderInstant() {
     init();
 
+    console.time('Sorting elements');
     sort();
+    console.timeEnd('Sorting elements');12
     renderFrame();
     alert('See console for details')
+
+    console.log('Sorted array with bucket structure');
+    console.log(sortedElements);
+    
+    console.log('Sorted array flat');
+    console.log(sortedElements.flat(Infinity));
 }
