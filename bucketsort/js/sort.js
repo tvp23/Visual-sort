@@ -3,9 +3,11 @@ const maxIntSize = 9999;
 let elements = [];
 let sortedElements = [];
 
-init();
-
 function init() {
+    // reseting arrays from previous runs
+    elements = [];
+    sortedElements = [];
+
     for (let index = 0; index < elementsCount; ++index) {
         const random = Math.random()*maxIntSize+1;
         elements.push(Math.floor(random));
@@ -42,18 +44,23 @@ function insert(array, path, num) {
     return array;
 }
 
-function sortNext() {
-    const elementToSort = elements.pop();
-    insert(sortedElements, getBuckets(elementToSort), elementToSort);
+function sortNext(n = 1) {
+    for (let index = 0; index < n; ++index) {
+        const elementToSort = elements.pop();
+        insert(sortedElements, getBuckets(elementToSort), elementToSort);
+    }
 }
 
 function sort() {
-    console.time('Sorting elements')
+    console.clear();
+    console.time('Sorting elements');
+
     elements.forEach(element => {
         insert(sortedElements, getBuckets(element), element);
     });
     elements = [];
-    console.timeEnd('Sorting elements')
+    
+    console.timeEnd('Sorting elements');
 
     console.log('Sorted array with bucket structure:');
     console.log(sortedElements);

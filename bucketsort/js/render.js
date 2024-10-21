@@ -1,5 +1,5 @@
 const canvasHeight = 500;
-const fps = 4;
+const fps = 30;
 
 function renderFrame() {
     const unsorted = document.getElementById('graph-unsorted');
@@ -29,19 +29,21 @@ function renderFrame() {
 }
 
 function renderMotion() {
+    init();
     renderFrame();
-    elements.forEach(element => {
-        setTimeout(() => {
-            sortNext();
+
+    setInterval(() => {
+        if(elements.length > 0) {
+            sortNext(8);
             renderFrame();
-        }, fps / 1000);
-        
-    });
+        }
+    }, 1000 / fps);
 }
 
 function renderInstant() {
+    init();
+
     sort();
     renderFrame();
+    alert('See console for details')
 }
-
-renderMotion();
