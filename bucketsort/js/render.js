@@ -41,6 +41,7 @@ function renderMotion() {
 function renderInstant() {
     init();
 
+    console.clear()
     console.time('Sorting elements');
     sort();
     console.timeEnd('Sorting elements');12
