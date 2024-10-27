@@ -3,21 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="./js/main.js"></script>
     <script defer src="./js/sort.js"></script>
-    <script defer src="./js/render.js"></script>
+    <script defer src="./js/canvas.js"></script>
     <link rel="stylesheet" href="style.css">
     <title>Visual sort</title>
 </head>
 <body>
-    <div>
-        <button onclick="renderMotion()">Motion</button>
-        <button onclick="renderInstant()">Instant</button>
+    <div class="centered nav">
+        <h1 class="title">Visual Sort</h1>
+        <p class="sub">Elements left to sort: <span id="el-left">0</span></p>
+        <div class="actions">
+            <button class="action" onclick="renderMotion()">Sort</button>
+            <button class="action" onclick="pauseSort()">Pause</button>
+            <button class="action" onclick="reset()">Reset</button>
+            <a href="https://github.com/tvp23/Visual-sort">
+                <img class="logo" src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" alt="Github logo">
+            </a>
+        </div>
     </div>
-    <div id="graph-unsorted" class="graph">
-        
-    </div>
-    <div id="graph-sorted" class="graph">
-        
+    <canvas id="canvas"></canvas>
     </div>
 </body>
 </html>
